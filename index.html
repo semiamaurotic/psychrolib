@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PsychroLib &#8212; PsychroLib  documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          PsychroLib</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">PsychroLib</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/index.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-psychrolib">
+<span id="psychrolib"></span><h1>PsychroLib<a class="headerlink" href="#module-psychrolib" title="Permalink to this headline">¶</a></h1>
+<p>psychrolib.py</p>
+<p>Contains functions for calculating thermodynamic properties of gas-vapor mixtures
+and standard atmosphere suitable for most engineering, physical and meteorological
+applications.</p>
+<p>Most of the functions are an implementation of the formulae found in the
+2017 ASHRAE Handbook - Fundamentals, in both International System (SI),
+and Imperial (IP) units. Please refer to the information included in
+each function for their respective reference.</p>
+<dl class="docutils">
+<dt>Example</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">psychrolib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set the unit system, for example to SI (can be either &#39;SI&#39; or &#39;IP&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psychrolib</span><span class="o">.</span><span class="n">SetUnitSystem</span><span class="p">(</span><span class="s1">&#39;SI&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the dew point temperature for a dry bulb temperature of 25 C and a relative humidity of 80%</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TDewPoint</span> <span class="o">=</span> <span class="n">psychrolib</span><span class="o">.</span><span class="n">GetTDewPointFromRelHum</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">TDewPoint</span><span class="p">)</span>
+<span class="go">21.309397163661785</span>
+</pre></div>
+</div>
+</dd>
+<dt>Copyright</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>For the current library implementation</dt>
+<dd>Copyright (c) 2018 D. Thevenard and D. Meyer.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For equations and coefficients published ASHRAE Handbook — Fundamentals, Chapter 1</dt>
+<dd>Copyright (c) 2017 ASHRAE Handbook — Fundamentals (<a class="reference external" href="https://www.ashrae.org">https://www.ashrae.org</a>)</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>License</dt>
+<dd>MIT (<a class="reference external" href="https://github.com/psychrometrics/psychrolib/LICENSE.txt">https://github.com/psychrometrics/psychrolib/LICENSE.txt</a>)</dd>
+<dt>Note from the Authors</dt>
+<dd>We have made every effort to ensure that the code is adequate, however, we make no
+representation with respect to its accuracy. Use at your own risk. Should you notice
+an error, or if you have a suggestion, please notify us through GitHub at
+<a class="reference external" href="https://github.com/psychrometrics/psychrolib/issues">https://github.com/psychrometrics/psychrolib/issues</a>.</dd>
+</dl>
+<dl class="data">
+<dt id="psychrolib.R_DA_IP">
+<code class="descclassname">psychrolib.</code><code class="descname">R_DA_IP</code><em class="property"> = 53.35</em><a class="headerlink" href="#psychrolib.R_DA_IP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Universal gas constant for dry air (IP version)</p>
+<dl class="docutils">
+<dt>Units:</dt>
+<dd>ft lb_Force lb_DryAir⁻¹ R⁻¹</dd>
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="data">
+<dt id="psychrolib.R_DA_SI">
+<code class="descclassname">psychrolib.</code><code class="descname">R_DA_SI</code><em class="property"> = 287.042</em><a class="headerlink" href="#psychrolib.R_DA_SI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Universal gas constant for dry air (SI version)</p>
+<dl class="docutils">
+<dt>Units:</dt>
+<dd>J kg_DryAir⁻¹ K⁻¹</dd>
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="psychrolib.UnitSystem">
+<em class="property">class </em><code class="descclassname">psychrolib.</code><code class="descname">UnitSystem</code><a class="reference internal" href="_modules/psychrolib.html#UnitSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.UnitSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Private class not exposed used to set automatic enumeration values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.SetUnitSystem">
+<code class="descclassname">psychrolib.</code><code class="descname">SetUnitSystem</code><span class="sig-paren">(</span><em>Units</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#SetUnitSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.SetUnitSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the system of units to use (SI or IP).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Units</strong> (<a class="reference internal" href="#psychrolib.UnitSystem" title="psychrolib.UnitSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitSystem</span></code></a>) – string indicating the system of units chosen (SI or IP)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This function <em>HAS TO BE CALLED</em> before the library can be used</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetUnitSystem">
+<code class="descclassname">psychrolib.</code><code class="descname">GetUnitSystem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetUnitSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetUnitSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return system of units in use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#psychrolib.UnitSystem" title="psychrolib.UnitSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitSystem</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.isIP">
+<code class="descclassname">psychrolib.</code><code class="descname">isIP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#isIP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.isIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the system in use is IP or SI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTRankineFromTFahrenheit">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTRankineFromTFahrenheit</code><span class="sig-paren">(</span><em>TFahrenheit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTRankineFromTFahrenheit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTRankineFromTFahrenheit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to convert temperature to degree Rankine (°R)
+given temperature in degree Fahrenheit (°F).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TRankine</strong> – Temperature in degree Fahrenheit (°F)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Temperature in degree Rankine (°R)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Exact conversion.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTKelvinFromTCelsius">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTKelvinFromTCelsius</code><span class="sig-paren">(</span><em>TCelsius</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTKelvinFromTCelsius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTKelvinFromTCelsius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to convert temperature to Kelvin (K)
+given temperature in degree Celsius (°C).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TCelsius</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Temperature in degree Celsius (°C)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Temperature in Kelvin (K)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Exact conversion.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTWetBulbFromTDewPoint">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTWetBulbFromTDewPoint</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TDewPoint</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTWetBulbFromTDewPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTWetBulbFromTDewPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return wet-bulb temperature given dry-bulb temperature, dew-point temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TDewPoint</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dew-point temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Wet-bulb temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTWetBulbFromRelHum">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTWetBulbFromRelHum</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>RelHum</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTWetBulbFromRelHum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTWetBulbFromRelHum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return wet-bulb temperature given dry-bulb temperature, relative humidity, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>RelHum</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Relative humidity in range [0, 1]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Wet-bulb temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetRelHumFromTDewPoint">
+<code class="descclassname">psychrolib.</code><code class="descname">GetRelHumFromTDewPoint</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TDewPoint</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetRelHumFromTDewPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetRelHumFromTDewPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return relative humidity given dry-bulb temperature and dew-point temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TDewPoint</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dew-point temperature in °F [IP] or °C [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Relative humidity in range [0, 1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 22</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetRelHumFromTWetBulb">
+<code class="descclassname">psychrolib.</code><code class="descname">GetRelHumFromTWetBulb</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TWetBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetRelHumFromTWetBulb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetRelHumFromTWetBulb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return relative humidity given dry-bulb temperature, wet bulb temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TWetBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Wet-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Relative humidity in range [0, 1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTDewPointFromRelHum">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTDewPointFromRelHum</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>RelHum</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTDewPointFromRelHum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTDewPointFromRelHum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dew-point temperature given dry-bulb temperature and relative humidity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>RelHum</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Relative humidity in range [0, 1]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dew-point temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTDewPointFromTWetBulb">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTDewPointFromTWetBulb</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TWetBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTDewPointFromTWetBulb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTDewPointFromTWetBulb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dew-point temperature given dry-bulb temperature, wet-bulb temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TWetBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Wet-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dew-point temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetVapPresFromRelHum">
+<code class="descclassname">psychrolib.</code><code class="descname">GetVapPresFromRelHum</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>RelHum</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetVapPresFromRelHum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetVapPresFromRelHum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return partial pressure of water vapor as a function of relative humidity and temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>RelHum</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Relative humidity in range [0, 1]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 12, 22</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetRelHumFromVapPres">
+<code class="descclassname">psychrolib.</code><code class="descname">GetRelHumFromVapPres</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>VapPres</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetRelHumFromVapPres"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetRelHumFromVapPres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return relative humidity given dry-bulb temperature and vapor pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>VapPres</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Relative humidity in range [0, 1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 12, 22</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTDewPointFromVapPres">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTDewPointFromVapPres</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>VapPres</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTDewPointFromVapPres"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTDewPointFromVapPres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dew-point temperature given dry-bulb temperature and vapor pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>VapPres</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dew-point temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn. 5 and 6</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The dew point temperature is solved by inverting the equation giving water vapor pressure
+at saturation from temperature rather than using the regressions provided
+by ASHRAE (eqn. 37 and 38) which are much less accurate and have a
+narrower range of validity.
+The Newton-Raphson (NR) method is used on the logarithm of water vapour
+pressure as a function of temperature, which is a very smooth function
+Convergence is usually achieved in 3 to 5 iterations.
+TDryBulb is not really needed here, just used for convenience.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetVapPresFromTDewPoint">
+<code class="descclassname">psychrolib.</code><code class="descname">GetVapPresFromTDewPoint</code><span class="sig-paren">(</span><em>TDewPoint</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetVapPresFromTDewPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetVapPresFromTDewPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return vapor pressure given dew point temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TDewPoint</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dew-point temperature in °F [IP] or °C [SI]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 36</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTWetBulbFromHumRatio">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTWetBulbFromHumRatio</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTWetBulbFromHumRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTWetBulbFromHumRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return wet-bulb temperature given dry-bulb temperature, humidity ratio, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Wet-bulb temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 33 and 35 solved for Tstar</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetHumRatioFromTWetBulb">
+<code class="descclassname">psychrolib.</code><code class="descname">GetHumRatioFromTWetBulb</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TWetBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetHumRatioFromTWetBulb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetHumRatioFromTWetBulb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return humidity ratio given dry-bulb temperature, wet-bulb temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TWetBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Wet-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 33 and 35</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetHumRatioFromRelHum">
+<code class="descclassname">psychrolib.</code><code class="descname">GetHumRatioFromRelHum</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>RelHum</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetHumRatioFromRelHum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetHumRatioFromRelHum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return humidity ratio given dry-bulb temperature, relative humidity, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>RelHum</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Relative humidity in range [0, 1]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetRelHumFromHumRatio">
+<code class="descclassname">psychrolib.</code><code class="descname">GetRelHumFromHumRatio</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetRelHumFromHumRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetRelHumFromHumRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return relative humidity given dry-bulb temperature, humidity ratio, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Relative humidity in range [0, 1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetHumRatioFromTDewPoint">
+<code class="descclassname">psychrolib.</code><code class="descname">GetHumRatioFromTDewPoint</code><span class="sig-paren">(</span><em>TDewPoint</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetHumRatioFromTDewPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetHumRatioFromTDewPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return humidity ratio given dew-point temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDewPoint</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dew-point temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 13</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetTDewPointFromHumRatio">
+<code class="descclassname">psychrolib.</code><code class="descname">GetTDewPointFromHumRatio</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetTDewPointFromHumRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetTDewPointFromHumRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dew-point temperature given dry-bulb temperature, humidity ratio, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dew-point temperature in °F [IP] or °C [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetHumRatioFromVapPres">
+<code class="descclassname">psychrolib.</code><code class="descname">GetHumRatioFromVapPres</code><span class="sig-paren">(</span><em>VapPres</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetHumRatioFromVapPres"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetHumRatioFromVapPres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return humidity ratio given water vapor pressure and atmospheric pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>VapPres</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 20</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetVapPresFromHumRatio">
+<code class="descclassname">psychrolib.</code><code class="descname">GetVapPresFromHumRatio</code><span class="sig-paren">(</span><em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetVapPresFromHumRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetVapPresFromHumRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return vapor pressure given humidity ratio and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 20 solved for pw</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetDryAirEnthalpy">
+<code class="descclassname">psychrolib.</code><code class="descname">GetDryAirEnthalpy</code><span class="sig-paren">(</span><em>TDryBulb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetDryAirEnthalpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetDryAirEnthalpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dry-air enthalpy given dry-bulb temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dry air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹ [SI]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 28</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetDryAirDensity">
+<code class="descclassname">psychrolib.</code><code class="descname">GetDryAirDensity</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetDryAirDensity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetDryAirDensity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dry-air density given dry-bulb temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dry air density in lb ft⁻³ [IP] or kg m⁻³ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Eqn 14 for the perfect gas relationship for dry air.
+Eqn 1 for the universal gas constant.
+The factor 144 in IP is for the conversion of Psi = lb in⁻² to lb ft⁻².</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetDryAirVolume">
+<code class="descclassname">psychrolib.</code><code class="descname">GetDryAirVolume</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetDryAirVolume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetDryAirVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dry-air volume given dry-bulb temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dry air volume in ft³ lb⁻¹ [IP] or in m³ kg⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Eqn 14 for the perfect gas relationship for dry air.
+Eqn 1 for the universal gas constant.
+The factor 144 in IP is for the conversion of Psi = lb in⁻² to lb ft⁻².</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetSatVapPres">
+<code class="descclassname">psychrolib.</code><code class="descname">GetSatVapPres</code><span class="sig-paren">(</span><em>TDryBulb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetSatVapPres"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetSatVapPres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return saturation vapor pressure given dry-bulb temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Vapor pressure of saturated air in Psi [IP] or Pa [SI]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1  eqn 5 &amp; 6</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetSatHumRatio">
+<code class="descclassname">psychrolib.</code><code class="descname">GetSatHumRatio</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetSatHumRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetSatHumRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return humidity ratio of saturated air given dry-bulb temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio of saturated air in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 36, solved for W</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetSatAirEnthalpy">
+<code class="descclassname">psychrolib.</code><code class="descname">GetSatAirEnthalpy</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetSatAirEnthalpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetSatAirEnthalpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return saturated air enthalpy given dry-bulb temperature and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Saturated air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹ [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetVaporPressureDeficit">
+<code class="descclassname">psychrolib.</code><code class="descname">GetVaporPressureDeficit</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetVaporPressureDeficit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetVaporPressureDeficit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Vapor pressure deficit given dry-bulb temperature, humidity ratio, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Vapor pressure deficit in Psi [IP] or Pa [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>Oke (1987) eqn 2.13a</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetDegreeOfSaturation">
+<code class="descclassname">psychrolib.</code><code class="descname">GetDegreeOfSaturation</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetDegreeOfSaturation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetDegreeOfSaturation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the degree of saturation (i.e humidity ratio of the air / humidity ratio of the air at saturation
+at the same temperature and pressure) given dry-bulb temperature, humidity ratio, and atmospheric pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Degree of saturation in arbitrary unit</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2009) ch. 1 eqn 12</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This definition is absent from the 2017 Handbook. Using 2009 version instead.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetMoistAirEnthalpy">
+<code class="descclassname">psychrolib.</code><code class="descname">GetMoistAirEnthalpy</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetMoistAirEnthalpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetMoistAirEnthalpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return moist air enthalpy given dry-bulb temperature and humidity ratio.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Moist air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 30</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetMoistAirVolume">
+<code class="descclassname">psychrolib.</code><code class="descname">GetMoistAirVolume</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetMoistAirVolume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetMoistAirVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return moist air specific volume given dry-bulb temperature, humidity ratio, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Specific volume of moist air in ft³ lb⁻¹ of dry air [IP] or in m³ kg⁻¹ of dry air [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 26</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In IP units, R_DA_IP / 144 equals 0.370486 which is the coefficient appearing in eqn 26
+The factor 144 is for the conversion of Psi = lb in⁻² to lb ft⁻².</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetMoistAirDensity">
+<code class="descclassname">psychrolib.</code><code class="descname">GetMoistAirDensity</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>HumRatio</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetMoistAirDensity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetMoistAirDensity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return moist air density given humidity ratio, dry bulb temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>HumRatio</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Moist air density in lb ft⁻³ [IP] or kg m⁻³ [SI]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">MoistAirDensity</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 11</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetStandardAtmPressure">
+<code class="descclassname">psychrolib.</code><code class="descname">GetStandardAtmPressure</code><span class="sig-paren">(</span><em>Altitude</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetStandardAtmPressure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetStandardAtmPressure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return standard atmosphere barometric pressure, given the elevation (altitude).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Altitude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Altitude in ft [IP] or m [SI]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Standard atmosphere barometric pressure in Psi [IP] or Pa [SI]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 3</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetStandardAtmTemperature">
+<code class="descclassname">psychrolib.</code><code class="descname">GetStandardAtmTemperature</code><span class="sig-paren">(</span><em>Altitude</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetStandardAtmTemperature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetStandardAtmTemperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return standard atmosphere temperature, given the elevation (altitude).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Altitude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Altitude in ft [IP] or m [SI]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Standard atmosphere dry-bulb temperature in °F [IP] or °C [SI]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 4</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetSeaLevelPressure">
+<code class="descclassname">psychrolib.</code><code class="descname">GetSeaLevelPressure</code><span class="sig-paren">(</span><em>StationPressure</em>, <em>Altitude</em>, <em>TDryBulb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetSeaLevelPressure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetSeaLevelPressure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sea level pressure given dry-bulb temperature, altitude above sea level and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>StationPressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Observed station pressure in Psi [IP] or Pa [SI]</li>
+<li><strong>Altitude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Altitude in ft [IP] or m [SI]</li>
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Sea level barometric pressure in Psi [IP] or Pa [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>Hess SL, Introduction to theoretical meteorology, Holt Rinehart and Winston, NY 1959,
+ch. 6.5; Stull RB, Meteorology for scientists and engineers, 2nd edition,
+Brooks/Cole 2000, ch. 1.</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The standard procedure for the US is to use for TDryBulb the average
+of the current station temperature and the station temperature from 12 hours ago.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.GetStationPressure">
+<code class="descclassname">psychrolib.</code><code class="descname">GetStationPressure</code><span class="sig-paren">(</span><em>SeaLevelPressure</em>, <em>Altitude</em>, <em>TDryBulb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#GetStationPressure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.GetStationPressure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return station pressure from sea level pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SeaLevelPressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Sea level barometric pressure in Psi [IP] or Pa [SI]</li>
+<li><strong>Altitude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Altitude in ft [IP] or m [SI]</li>
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Station pressure in Psi [IP] or Pa [SI]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>See ‘GetSeaLevelPressure’</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function is just the inverse of ‘GetSeaLevelPressure’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.CalcPsychrometricsFromTWetBulb">
+<code class="descclassname">psychrolib.</code><code class="descname">CalcPsychrometricsFromTWetBulb</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TWetBulb</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#CalcPsychrometricsFromTWetBulb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.CalcPsychrometricsFromTWetBulb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to calculate humidity ratio, dew-point temperature, relative humidity,
+vapour pressure, moist air enthalpy, moist air volume, and degree of saturation of air given
+dry-bulb temperature, wet-bulb temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TWetBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Wet-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]
+Dew-point temperature in °F [IP] or °C [SI]
+Relative humidity in range [0, 1]
+Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]
+Moist air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹ [SI]
+Specific volume of moist air in ft³ lb⁻¹ [IP] or in m³ kg⁻¹ [SI]
+Degree of saturation [unitless]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.CalcPsychrometricsFromTDewPoint">
+<code class="descclassname">psychrolib.</code><code class="descname">CalcPsychrometricsFromTDewPoint</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>TDewPoint</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#CalcPsychrometricsFromTDewPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.CalcPsychrometricsFromTDewPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to calculate humidity ratio, wet-bulb temperature, relative humidity,
+vapour pressure, moist air enthalpy, moist air volume, and degree of saturation of air given
+dry-bulb temperature, dew-point temperature, and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>TDewPoint</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dew-point temperature in °F [IP] or °C [SI]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]
+Wet-bulb temperature in °F [IP] or °C [SI]
+Relative humidity in range [0, 1]
+Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]
+Moist air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹ [SI]
+Specific volume of moist air in ft³ lb⁻¹ [IP] or in m³ kg⁻¹ [SI]
+Degree of saturation [unitless]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychrolib.CalcPsychrometricsFromRelHum">
+<code class="descclassname">psychrolib.</code><code class="descname">CalcPsychrometricsFromRelHum</code><span class="sig-paren">(</span><em>TDryBulb</em>, <em>RelHum</em>, <em>Pressure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/psychrolib.html#CalcPsychrometricsFromRelHum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#psychrolib.CalcPsychrometricsFromRelHum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to calculate humidity ratio, wet-bulb temperature, dew-point temperature,
+vapour pressure, moist air enthalpy, moist air volume, and degree of saturation of air given
+dry-bulb temperature, relative humidity and pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TDryBulb</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Dry-bulb temperature in °F [IP] or °C [SI]</li>
+<li><strong>RelHum</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Relative humidity in range [0, 1]</li>
+<li><strong>Pressure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Atmospheric pressure in Psi [IP] or Pa [SI]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Humidity ratio in lb_H₂O lb_Air⁻¹ [IP] or kg_H₂O kg_Air⁻¹ [SI]
+Wet-bulb temperature in °F [IP] or °C [SI]
+Dew-point temperature in °F [IP] or °C [SI].
+Partial pressure of water vapor in moist air in Psi [IP] or Pa [SI]
+Moist air enthalpy in Btu lb⁻¹ [IP] or J kg⁻¹ [SI]
+Specific volume of moist air in ft³ lb⁻¹ [IP] or in m³ kg⁻¹ [SI]
+Degree of saturation [unitless]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018, D. Thevenard and D. Meyer.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
